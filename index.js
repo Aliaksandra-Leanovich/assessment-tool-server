@@ -4,13 +4,12 @@ const pdf = require("html-pdf");
 const nodemailer = require("nodemailer");
 const express = require("express");
 const cors = require("cors");
-const { Routes } = require("./routes/routes");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post(Routes.PDF, async (request, response) => {
+app.post("/pdf", async (request, response) => {
   try {
     const pdfBuffer = await new Promise((resolve, reject) => {
       pdf
