@@ -13,7 +13,13 @@ app.post("/pdf", async (request, response) => {
   try {
     const pdfBuffer = await new Promise((resolve, reject) => {
       pdf
-        .create(pdfTemplate(request.body), { format: "Letter" })
+        .create(pdfTemplate(request.body), {
+          childProcessOptions: {
+            env: {
+              OPENSSL_CONF: "/dev/null",
+            },
+          },
+        })
         .toBuffer((error, buffer) => {
           if (error) {
             reject(new Error(`Failed to generate PDF: ${error.message}`));
