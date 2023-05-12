@@ -62,6 +62,12 @@ app.post("/pdf", async (request, response) => {
         response.send("PDF generated and sent via email.");
       }
     });
+
+    res.set(
+      "Access-Control-Allow-Origin",
+      "https://assessment-tool-ff3c7.firebaseapp.com"
+    );
+    res.send({ msg: "This has CORS enabled" });
   } catch (error) {
     console.log(error);
     response.status(500).send("Error generating PDF.");
