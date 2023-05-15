@@ -47,7 +47,7 @@ app.post("/pdf", async (request, response) => {
       subject: "Testing report",
       attachments: [
         {
-          filename: "pdf.pdf",
+          filename: "report.pdf",
           content: pdfBuffer,
         },
       ],
